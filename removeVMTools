@@ -1,0 +1,15 @@
+#Sourceable Function to Remove VMWare Tools 
+
+function removeVMTools() {
+
+find / -type d -name vmware-tools-distrib -exec rm -rf {} \;
+
+for vmPackage in `rpm -qa | grep open-vm`
+do 
+   rpm -e $vmPackage
+done
+
+return 0 
+
+}
+
