@@ -2,7 +2,7 @@
 
 #Script to update /etc/hosts and /etc/resolv.conf search domains on cloud endure migrated servers
 
-ipAddress=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+ipAddress=$(curl -s http://ip/latest/meta-data/local-ipv4)
 etcHosts="/etc/hosts"
 etcResolv="/etc/resolv.conf"
 logDate=$(date +"%b %e %H:%M:%S")
@@ -39,8 +39,8 @@ function addHost() {
 }
 
 function addSearchDomain() {
-   local searchDomain1="westrock.com"
-   local searchDomain2="rocktenn.com"
+   local searchDomain1=".com"
+   local searchDomain2=".com"
    local searchDomain3="ec2.internal"
    local searchDomainLine=$(grep "search" $etcResolv)
 
